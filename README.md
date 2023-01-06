@@ -1,4 +1,4 @@
-# Object Detection with Javascript, the Easy Way!
+# Object Detection with Javascript
 
 Detect 80 different classes of objects using just javascript in a game.
 
