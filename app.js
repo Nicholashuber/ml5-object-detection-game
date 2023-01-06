@@ -19,8 +19,29 @@ function preload() {
   console.log('detector object is loaded');
 }
 
+
+function getrandomobj() {
+                  var textArray = [
+                                  'remote',
+                                  'bottle',
+                                  'book'
+                                  ];
+
+      const randomNumber = Math.floor(Math.random()*textArray.length);
+      const whatwewamt = textArray[randomNumber];
+      const testDiv = document.getElementById("Showme");
+      testDiv.innerHTML = "<h5>Show me a "+whatwewamt+"!</h5>";
+
+}
+
 // The setup() function is called once when the program starts.
 function setup() {
+
+
+
+
+
+getrandomobj();
   // create canvas element with 640 width and 480 height in pixel
   createCanvas(640, 480);
   // Creates a new HTML5 <video> element that contains the audio/video feed from a webcam.
@@ -79,6 +100,7 @@ function drawBoundingBox(object) {
 
 // draw label of the detected object (inside the box)
 function drawLabel(object) {
+console.log('drawLabel');
   // Disables drawing the stroke
   noStroke();
   // sets the color used to fill shapes
@@ -87,10 +109,24 @@ function drawLabel(object) {
   textSize(24);
   // draw string to canvas
   text(object.label, object.x + 10, object.y + 24);
+  if(object.label == 'bottle'){
+    alert("You found the water bottle!");
+    getrandomobj();
+  }
+    if(object.label == 'remote'){
+    alert("You found the remote!");
+    getrandomobj();
+  }
+
+      if(object.label == 'book'){
+    alert("You found the book!");
+    getrandomobj();
+  }
 }
 
 // callback function. it is called when object is detected
 function onDetected(error, results) {
+  //console.log('detected');
   if (error) {
     console.error(error);
   }
@@ -123,9 +159,9 @@ function toggleDetecting() {
   if (!video || !detector) return;
   if (!detecting) {
     detect();
-    toggleDetectingEl.innerText = 'Stop Detecting';
+    toggleDetectingEl.innerText = 'Stop Game';
   } else {
-    toggleDetectingEl.innerText = 'Start Detecting';
+    toggleDetectingEl.innerText = 'Start Game';
   }
   detecting = !detecting;
 }
