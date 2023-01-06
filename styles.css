@@ -4,4 +4,5 @@ canvas {
 
 video {
   border: 1px solid blue;
+  display:none;
 }
